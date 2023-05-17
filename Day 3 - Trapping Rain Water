@@ -1,0 +1,35 @@
+/*ACCEPTED JAVA O(n) SOLUTION) */
+
+class Solution {
+    public int trap(int[] height) {
+        
+        int []lmax=new int [height.length];
+        int []rmax=new int [height.length];
+        
+        lmax[0]=height[0];          //array Starts from front
+        rmax[height.length-1]=height[height.length-1];  //array starts from back
+        
+        for(int i=1; i<height.length;i++)
+        {
+            lmax[i]=Math.max(lmax[i-1],height[i]);
+        }
+        
+        for(int i=height.length-2;i>=0;i--)
+        {
+            rmax[i]=Math.max(rmax[i+1],height[i]);
+        }
+        
+        int totalWaterLevel=0;
+        
+        for(int i=0;i<height.length;i++)
+        {
+            int WaterLevel = Math.min(lmax[i],rmax[i])-height[i];
+            if(WaterLevel<0) WaterLevel=0;
+            totalWaterLevel+=WaterLevel;
+        }
+        return totalWaterLevel;
+    }
+}
+LOGIC: DYNAMIC PROGRAMMING
+TC : O(n)
+SC: O(n)
