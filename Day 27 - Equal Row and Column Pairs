@@ -1,0 +1,17 @@
+class Solution {
+    public int equalPairs(int[][] grid) {
+        int transpose[][] = new int[grid.length][grid.length];
+        for(int i=0;i<grid.length;i++){ //making transpose matrix
+            for(int j=0;j<grid[0].length;j++){
+                transpose[j][i]=grid[i][j];  //in trnaspose elements (i,j) is swapped with (j,i) 
+            }
+        }
+        int count=0;
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<transpose.length;j++){
+                if(Arrays.equals(grid[i], transpose[j])) count++;
+            }
+        }
+        return count;
+    }
+}
