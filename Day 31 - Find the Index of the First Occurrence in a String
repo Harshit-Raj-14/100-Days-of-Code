@@ -1,0 +1,34 @@
+/* ELEGANT SOLUTION - USING INBUILT STRING METHOD BEATS 100% */
+class Solution {
+    public int strStr(String haystack, String needle) {
+        return haystack.indexOf(needle);
+    }
+}
+
+
+
+
+/* SLIDING WINDOW BEATS 34% */
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int k=0;
+        int j=0;
+        int count=0;
+        int firstOccurence=0;
+        for(int i=0;i<haystack.length();i++){
+            if(haystack.charAt(i)==needle.charAt(j)){
+                firstOccurence=i;
+                while(i<haystack.length() && j<needle.length() && haystack.charAt(i)==needle.charAt(j)){
+                    i++;
+                    j++;
+                    count++;
+                    if(count==needle.length()) return firstOccurence;
+                }
+            }
+            j=0;
+            count=0;
+            i=k++;   //to go back to the next element from where we started when i++ happen. This is talking about the case shown in example
+        }
+        return -1;
+    }
+}
