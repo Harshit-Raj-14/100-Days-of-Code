@@ -1,0 +1,29 @@
+    public static void separateNumbers(String s) {
+        String subString = "";
+        for(int i=1;i<=s.length()/2;i++){ //start loop from 1 to get substring properly, also for string length 1 it will be NO
+            subString = s.substring(0,i);
+            long num = Long.parseLong(subString);
+            String beautifulString = subString;
+            while(beautifulString.length()<s.length()){
+                beautifulString += Long.toString(++num);
+            }
+            if(s.equals(beautifulString)){
+                System.out.println("YES "+subString);
+                return;
+            }
+        }
+        System.out.println("NO");
+    }
+    
+    LOGIC ---
+We only need to valdiate till half the elngth of the string, if we move further the length of the first number then will become greater than the rest, hence we will never be able to make it beautiful then.
+A single length string will never be beautiful.
+
+First take the first digit and then form the possible beautiful sequence and then match it again with the given string. Also, make sure the sequence does not exceed the legnth of string
+eg: 920919
+1st step: take 9, possible beautiful number = 9101112 => does not match given strign and also exceeds length
+2nd step take 92, possible beautiful number = 929394 => does not match
+3rd step take 920, possible beautiful number = 920921 => does not match
+4 th tep take 9209, exceeds half length, the rest can never fulfill the codntiionf being the enxt greater so not beautiful.
+
+So, all we need is to generate all kinds of beautiful sequence and if it matches to our string. We output yes, else no.
