@@ -1,0 +1,8 @@
+class Solution {
+  public int countOdds(int low, int high) {
+      int range = high-low; //the no of odd numbers between range will be range/2
+      if(low%2!=0 & high%2!=0) return range/2 + 1;  //low and high are odd
+      if(low%2==0 & high%2==0) return range/2;      //low and high are even
+      else return range/2 + 1;                      //one is odd and other even
+  }
+}
