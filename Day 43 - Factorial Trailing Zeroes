@@ -1,0 +1,19 @@
+class Solution {
+    public int trailingZeroes(int n) {
+        int count=0;
+        int i=1;
+        while(Math.floor(n/Math.pow(5,i))>0){
+            count+=Math.floor(n/Math.pow(5,i));
+            i++;
+        }
+        return count;
+    }
+}
+
+/* Using factorial formula
+We know that [n/5]+[n/5^2]+....
+Will give us the number of zeroes.
+Since 10=5x2
+Between any rnage number of 2>number of 5
+So, number of 10' or trailing zeroes will be equal to occurences of multiple of 5 in that number
+*/
