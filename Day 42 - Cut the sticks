@@ -1,0 +1,21 @@
+/* ACCEPTED SOLUTION */
+    public static List<Integer> cutTheSticks(List<Integer> arr) {
+        ArrayList<Integer> list = new ArrayList<>();
+        Collections.sort(arr);
+        //int sticks=arr.size();
+        ArrayList<Integer> ans = new ArrayList<>();
+        while(arr.size()!=0){
+            ans.add(arr.size());  //adding the sticks remaning after removing 0 size sticks
+            int min=arr.get(0);
+            for(int i=0;i<arr.size();i++){
+                arr.set(i, arr.get(i)-min);  
+            }
+            for(int i=0;i<arr.size();i++){  //removing all zeroes
+                if(arr.get(i)==0){
+                    arr.remove(i);
+                    i--;   //need to recheck if again 0 comes at i when previous deleted
+                }
+            }
+        }
+        return ans;
+    }
