@@ -1,0 +1,16 @@
+    public static List<Integer> icecreamParlor(int m, List<Integer> arr) {
+        HashMap<Integer, Integer> map=new HashMap<>();
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int i=0;i<arr.size();i++){
+            map.put(arr.get(i),i);
+        }
+        for(int i=0;i<arr.size();i++){
+            if(map.containsKey(m-arr.get(i)) && map.get(m-arr.get(i))!=i){    
+                ans.add(map.get(m-arr.get(i))+1);   //to get 1-base indexing
+                ans.add(i+1);   //to get 1-base indexing
+                break;
+            }
+        }
+        Collections.sort(ans);
+        return ans;
+    }
