@@ -1,0 +1,18 @@
+    public static List<Integer> missingNumbers(List<Integer> arr, List<Integer> brr) {
+        int max=0;
+        for(int i=0;i<brr.size();i++){
+            max=Math.max(max,brr.get(i));
+        }
+        int count[] = new int[max+1];
+        for(int i=0;i<brr.size();i++){
+            count[brr.get(i)]++;
+        }
+        for(int i=0;i<arr.size();i++){
+            count[arr.get(i)]--;
+        }
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int i=0;i<count.length;i++){
+            if(count[i]>0) ans.add(i);
+        }
+        return ans;
+    }
