@@ -1,0 +1,13 @@
+    public static int pairs(int k, List<Integer> arr) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int count=0;
+        for(int i=0;i<arr.size();i++){
+            map.put(arr.get(i),i);
+        }
+        for(int i=0;i<arr.size();i++){
+            if(map.containsKey(arr.get(i)-k) && map.get(arr.get(i)-k)!=i){
+                count++;
+            }
+        }
+        return count;
+    }
